@@ -4,6 +4,9 @@ module.exports = {
         return models.Note.find();
     },
     note: (parent, args, {models}) => {
-        return models.Note.findById(args.id)
+        return models.Note.findById(args.id);
+    },
+    users: (parent, args, {models}) => {
+        return models.User.find();
     }
-}
+};

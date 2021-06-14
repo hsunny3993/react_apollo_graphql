@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 
 // Define the note's database schema
-const noteScheme = new mongoose.Schema(
+const NoteScheme = new mongoose.Schema(
     {
         content: {
             type: String,
@@ -20,6 +20,6 @@ const noteScheme = new mongoose.Schema(
 );
 
 // Define the 'Note' model with the schema
-const Note = mongoose.model("Note", noteScheme);
+const Note = mongoose.model("Note", NoteScheme);
 
 module.exports = Note;
