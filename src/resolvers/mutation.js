@@ -14,7 +14,11 @@ module.exports = {
             author: args.author
         });
     },
-    updateNote: (parent, {id, content}, {models}) => {
+    updateNote: (parent, {id, content}, {models, user}) => {
+        if (!user) {
+            throw new AuthenticationError("You must sign in to update a note")
+        }
+
         return models.Note.findOneAndUpdate(
             {
                 _id: id
@@ -29,7 +33,11 @@ module.exports = {
             }
         );
     },
-    deleteNote: async (parent, {id}, {models}) => {
+    deleteNote: async (parent, {id}, {models, user}) => {
+        if (!user) {
+            throw new AuthenticationError("You must sign in to delete a note")
+        }
+
         try {
             await models.Note.findOneAndDelete({_id: id});
             return true;
